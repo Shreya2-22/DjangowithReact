@@ -1,5 +1,6 @@
-function Register(){
-    return <h1>Register</h1>
+import Form from "../pages/Form";
+function Register() {
+  return <Form route="/api/user/register/" method="register" />;
 }
 
 export default Register;

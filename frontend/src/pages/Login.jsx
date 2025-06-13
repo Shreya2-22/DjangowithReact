@@ -1,5 +1,6 @@
-function Login(){
-    return <h1>Login</h1>
+import Form from "../pages/Form";
+function Login() {
+  return <Form route="/api/token/" method="login" />;
 }
 
 export default Login;
