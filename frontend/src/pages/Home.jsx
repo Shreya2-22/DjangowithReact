@@ -27,7 +27,7 @@ function Home() {
     api
       .delete(`/api/notes/delete/${id}/`)
       .then((res) => {
-        if (res.status === 204) alert("Note deleted successfully");
+        if (res.status === 204) alert("Are you sure you want to delete this note?");
         else alert("Error deleting note");
         getNotes();
       })
@@ -35,26 +35,32 @@ function Home() {
   };
 
   const createNote = (e) => {
-    e.preventDefault();
-    api
-      .post("/api/notes/", { title, content })
-      .then((res) => {
-        if (res.status === 201) {
-          alert("Note created successfully");
-        } else {
-          alert("Error creating note");
-        }
-        getNotes();
-      })
-      .catch((error) => alert(error));
-  };
-
+  e.preventDefault();
+  api
+    .post("/api/notes/", { title, content })
+    .then((res) => {
+      if (res.status === 201) {
+        // Clear the form fields first
+        setTitle("");
+        setContent("");
+        // Refresh notes and then show success message
+        return getNotes();
+      } else {
+        alert("Error creating note");
+      }
+    })
+    .then(() => {
+      // Show success message after notes are refreshed
+      alert("Note created successfully");
+    })
+    .catch((error) => alert(error));
+};
   return (
     <div>
       <div>
         <h2>Notes</h2>
         {notes.map((note) => (
-          <Note note={note} onDelete={deleteNote} key={note.id} />
+          <Note note={note} deleteNote={deleteNote} key={note.id} />
         ))}
       </div>
       <h2>Create a Note</h2>
