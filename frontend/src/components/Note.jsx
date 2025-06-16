@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/Note.css";
 
 function Note({ note, deleteNote }) {
     const formattedDate = new Date(note.created_at).toLocaleDateString("en-US")
@@ -7,7 +8,7 @@ function Note({ note, deleteNote }) {
       <p className="note-title">{note.title}</p>
       <p className="note-content">{note.content}</p>
       <p className="note-date">{formattedDate}</p>
-      <button className="delete-button" onClick={()=>deleteNote(note.id)}></button>
+      <button className="delete-button" onClick={()=>deleteNote(note.id)}>Delete</button>
     </div>
   );
 }
