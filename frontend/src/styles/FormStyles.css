@@ -1,4 +1,12 @@
-/* FormStyles.css */
+/* ------------------------------------------- */
+/* src/styles/FormStyles.css */
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
 .form-container {
   display: flex;
   flex-direction: column;
@@ -9,6 +17,7 @@
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   max-width: 400px;
+  background: white;
 }
 
 .form-input {
@@ -34,4 +43,20 @@
 
 .form-button:hover {
   background-color: #0056b3;
+}
+
+.form-footer {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  text-align: center;
+  color: #555;
+}
+
+.form-footer a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.form-footer a:hover {
+  text-decoration: underline;
 }
