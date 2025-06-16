@@ -1,4 +1,3 @@
-// src/components/Form.jsx
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../api";
@@ -13,8 +12,8 @@ function Form({ route, method }) {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
     setLoading(true);
+    e.preventDefault();
     try {
       const res = await api.post(route, { username, password });
       if (method === "login") {
@@ -58,16 +57,19 @@ function Form({ route, method }) {
         <button className="form-button" type="submit">
           {method === "login" ? "Login" : "Register"}
         </button>
-
-        {/* Footer link moved inside form-container */}
-        <p className="form-footer">
-          {method === "login" ? (
-            <>New user? <Link to="/register">Register here</Link></>
-          ) : (
-            <>Already have an account? <Link to="/login">Login here</Link></>
-          )}
-        </p>
       </form>
+
+      <div className="form-footer">
+        {method === "login" ? (
+          <p>
+            New user? <Link to="/register">Register here</Link>
+          </p>
+        ) : (
+          <p>
+            Already have an account? <Link to="/login">Login here</Link>
+          </p>
+        )}
+      </div>
     </div>
   );
 }
